@@ -13,10 +13,10 @@ console.log(cidade);
 cidade = "Nova Cidade"; // Alteração do nome Socorro para Nova Cidade.
 console.log(cidade);
 
-//Questão Numero 4
-// (Uncaught TypeError: Assignment to constant variable.) Variaveis do tipo const não podem ser reatribuidas.
-//PI = 3,14159; 
-//console.log(PI);
+/*Questão Numero 4
+(Uncaught TypeError: Assignment to constant variable.) Variaveis do tipo const não podem ser reatribuidas.
+PI = 3,14159; 
+console.log(PI);*/
 
 //Questão Numero 5
 let num1 = 15;
@@ -35,3 +35,11 @@ console.log(resultadoMultiplicacao);
 //Questão Numero 8
 let resultadoDivisao = num1/num2;
 console.log(resultadoDivisao);
+
+//Questão Numero 9
+//Usado para definir em qual questão pertence o codigo e ele serve para uma documentação mais simples ou remoção de uma unica linha do codigo.
+
+//Questão Numero 10
+//Foi utilizado na questão numero 4, a principal diferença é que não há limite para quantidade de linhas comentadas por esse metodo.
+
+//Questão Numero 11
