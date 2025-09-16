@@ -23,3 +23,15 @@ let num1 = 15;
 let num2 = 7;
 let resultadoSoma = num1+num2;
 console.log(resultadoSoma);
+
+//Questão Numero 6
+let resultadoSubtracao = num1-num2;
+console.log(resultadoSubtracao);
+
+//Questão Numero 7
+let resultadoMultiplicacao = num1*num2;
+console.log(resultadoMultiplicacao);
+
+//Questão Numero 8
+let resultadoDivisao = num1/num2;
+console.log(resultadoDivisao);
