@@ -12,3 +12,7 @@ let cidade = "Socorro" // Criação da Variavel cidade com a atribuição do nom
 console.log(cidade);
 cidade = "Nova Cidade"; // Alteração do nome Socorro para Nova Cidade.
 console.log(cidade);
+
+//Questão Numero 4
+PI = 3,14159; // (Uncaught TypeError: Assignment to constant variable.) Variaveis do tipo const não podem ser reatribuidas.
+console.log(PI);
