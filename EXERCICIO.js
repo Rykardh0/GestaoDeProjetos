@@ -43,3 +43,13 @@ console.log(resultadoDivisao);
 //Foi utilizado na questão numero 4, a principal diferença é que não há limite para quantidade de linhas comentadas por esse metodo.
 
 //Questão Numero 11
+let quantidade = 5;
+
+//Questão Numero 12
+let TAXA_JUROS = 0.05;
+
+//Questão Numero 13
+let primeiroNome = "Ricardo";
+let ultimoNome = "Henrique";
+let nomeCompleto = primeiroNome+" "+ultimoNome;
+console.log(nomeCompleto);
