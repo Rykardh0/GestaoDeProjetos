@@ -88,4 +88,52 @@ let raio = 5;
 let area = PI*(raio**2);
 console.log(area);
 
+//Questão Numero 19
+//Faria pequenos comentarios de linha unica indicando o que está sendo feito naquela linha de codigo.
+
+//Questão Numero 21
+let valorA = 10;
+let valorB = 20;
+let valorTemp = valorA; // adiciona o valor de valorA
+valorA = valorB;
+valorB = valorTemp;
+console.log(valorA,valorB);
+
+//Questão Numero 22
+let peso = 86;
+let altura = 1.74;
+console.log(peso/(altura**2));
+
+//Questão Numero 23
+let temperaturaCelsius = 25;
+let fahrenheit = (temperaturaCelsius*(9/5)+32)
+console.log(fahrenheit);
+
+//Questão Numero 24
+let valor1 = 10;
+let valor2 = "10";
+console.log(valor1==valor2); //Operador de igualdade converte e iguala os tipos antes de comparar os valores.
+console.log(valor1===valor2); //Operador de igualdade estrita compara tanto os valores quantos os tipos.
+
+//Questão Numero 25
+let quantidadeTotalDeItensNoCarrinho;
+let tipoGalaticoDeVariavelPlanetaria;
+
+//Questão Numero 26
+let URL_API = "https://api.example.com";
+
+//Questão Numero 27
+// Questão Numero 3 há comentarios indicando como está sendo utilizado a variavel
+
+//Questão Numero 28
+let n1 = 10;
+let n2 = 5;
+let n3 = 3;
+console.log(n1*n2*n3);
+
+//Questão Numero 29
+let resto = 17%5 ; 
+console.log(resto);
+
+
 
