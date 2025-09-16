@@ -14,5 +14,12 @@ cidade = "Nova Cidade"; // Alteração do nome Socorro para Nova Cidade.
 console.log(cidade);
 
 //Questão Numero 4
-PI = 3,14159; // (Uncaught TypeError: Assignment to constant variable.) Variaveis do tipo const não podem ser reatribuidas.
-console.log(PI);
+// (Uncaught TypeError: Assignment to constant variable.) Variaveis do tipo const não podem ser reatribuidas.
+//PI = 3,14159; 
+//console.log(PI);
+
+//Questão Numero 5
+let num1 = 15;
+let num2 = 7;
+let resultadoSoma = num1+num2;
+console.log(resultadoSoma);
