@@ -53,3 +53,39 @@ let primeiroNome = "Ricardo";
 let ultimoNome = "Henrique";
 let nomeCompleto = primeiroNome+" "+ultimoNome;
 console.log(nomeCompleto);
+
+//Questão Numero 14
+let a = 10;
+let b = 5;
+let c = 2;
+console.log((a+b)*c);
+
+//Questão Numero 15
+let x = 3;
+let y = 4;
+let z = 2;
+let result1 = x+y*z ;
+let result2 = (x+y)*z ;
+console.log(result1, result2);
+
+//Questão Numero 16
+let div0 = 6/0 ;
+console.log(div0);
+/* Aparece a palavra Infinity. Como a divisão por 0 é uma equação matematicamente indefinda, em javaScript
+foi dado esse tratamento a ela, outras repesentações são -Infinity e NaN*/
+
+//Questão Numero 17
+let contador = 1;
+contador = contador+1;
+console.log(contador);
+contador = contador+1;
+console.log(contador);
+contador = contador+1;
+console.log(contador);
+
+//Questão Numero 18
+let raio = 5;
+let area = PI*(raio**2);
+console.log(area);
+
+
