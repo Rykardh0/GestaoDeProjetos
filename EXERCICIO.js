@@ -1,2 +1,2 @@
-var saudacao="Olá, JavaScript";
+let saudacao="Olá, JavaScript";
 console.log(saudacao);
