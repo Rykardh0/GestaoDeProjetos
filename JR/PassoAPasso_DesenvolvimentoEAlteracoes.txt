@@ -13,5 +13,8 @@
 *Mudança da Função autenticar() para procurar usuarios no banco e manter ativo em paginas de html diferentes
 *Desuso do if() para mostrar diferentes Cards de usuarios no mesmo html
 *Mudança da Função autenticar() para ir em paginas diferentes dependendo do tipo de usuario fazendo Login
-* 
+*Mudança da Função autenticar() para ir em paginas com começo Modulo"+TipoDeUsuario+".html
+*Mudanças no Arquivo ModuloProfessor - variavel usuario recebe agora "usuario_ativo" do localStorage
+*Mudanças no Arquivo ModuloProfessor - if procura tipo adequado "Professor"
+
 <_

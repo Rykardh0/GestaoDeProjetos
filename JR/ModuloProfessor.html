@@ -64,9 +64,9 @@
 /* =========================
    PROTEÇÃO DE PÁGINA
 ========================= */
-let usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+let usuario = JSON.parse(localStorage.getItem("usuario_ativo"));
 
-if (!usuario || usuario.tipo !== "professor") {
+if (!usuario || usuario.tipo !== "Professor") {
   window.location.href = "LoginProfessor.html";
 } else {
   document.getElementById("nomeProfessor").innerText =
@@ -77,7 +77,7 @@ if (!usuario || usuario.tipo !== "professor") {
    LOGOUT
 ========================= */
 function sair() {
-  localStorage.removeItem("usuarioLogado");
+  localStorage.removeItem("usuario_ativo");
   window.location.href = "index.html";
 }
 </script>
