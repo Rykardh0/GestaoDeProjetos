@@ -17,10 +17,10 @@
     </div>
 
     <div class="container">
-        <h2>Qual módulo você deseja acessar?</h2>
+        <h2>Informe seu Usuario e Senha!</h2>
 
         <div class="cards">
-            <a href="LoginAluno.html" class="card" >
+            <!-- <a href="LoginAluno.html" class="card" >
                 <i class="fas fa-user-graduate" ></i>
                 Aluno
             </a>
@@ -33,9 +33,53 @@
             <a href="LoginAdmin.html" class="card green">
                 <i class="fas fa-user-cog"></i>
                 Administrador
+            </a> -->
+
+            <a id="tela-login" class="card active">
+                <p class="user-info">Identifique-se para acessar o painel</p>
+                <input type="text" id="user_input" placeholder="Usuário">
+                <input type="password" id="pass_input" placeholder="Senha">
+                <button onclick="autenticar()">Entrar no Sistema</button>
+                <p style="font-size: 12px; color: #888;">Contas: admin/123, prof/123, aluno/123</p>
             </a>
+            
         </div>
     </div>
+<script>
+    // BANCO DE DADOS NO CÓDIGO
+    let BANCO = {
+        "admin": { senha: "123", tipo: "admin" },
+        "prof":  { senha: "123", tipo: "professor" },
+        "aluno": { senha: "123", tipo: "aluno", materias: {} }
+    };
+
+    function mostrar(id) {
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+
+    // LÓGICA DE LOGIN (A "CHAVE" DO SISTEMA)
+    function autenticar() {
+        const u = document.getElementById('user_input').value;
+        const s = document.getElementById('pass_input').value;
+
+        if (BANCO[u] && BANCO[u].senha === s) {
+            const usuario = BANCO[u];
+            
+            if (usuario.tipo === "admin") {
+                mostrar('painel-admin');
+            } 
+            else if (usuario.tipo === "professor") {
+                mostrar('painel-professor');
+            } 
+            else if (usuario.tipo === "aluno") {
+                carregarBoletim(u);
+            }
+        } else {
+            alert("Usuário ou senha inválidos!");
+        }
+    }
+    </script>
 
 </body>
 </html>
