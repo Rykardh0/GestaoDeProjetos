@@ -21,4 +21,6 @@
 *Mudanças no Arquivo ModuloAdmin - botão sair redirecionando para index
 *Mudanças no Arquivo ModuloAdmin - adição no script(GERAR RELATÓRIO GERAL e FUNÇÃO AUXILIAR)
 *Mudanças no Arquivo ModuloAdmin - adição no script(CADASTRAR)
+*Reset para versao Mudanças no Arquivo ModuloAdmin - adição no script(GERAR RELATÓRIO GERAL e FUNÇÃO AUXILIAR)
+*Mudanças no Arquivo ModuloAdmin - adição no script(GERAR RELATÓRIO GERAL e CADASTRAR)
 <_

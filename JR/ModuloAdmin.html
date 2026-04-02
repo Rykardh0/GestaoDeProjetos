@@ -29,6 +29,7 @@
     <h4>Relatório Geral de Alunos</h4>
     <button onclick="gerarRelatorio()" style="background: #17a2b8;">Atualizar Relatório</button>
     <div id="relatorio-lista" style="margin-top: 15px; font-size: 0.85em;"></div>
+    <div id="relatorio-listaP" style="margin-top: 15px; font-size: 0.85em;"></div>
 
     <button class="btn-sair" onclick="sair()">Sair</button>
 </div>
@@ -58,18 +59,19 @@ function sair() {
    GERAR RELATÓRIO GERAL
 ========================= */
 function gerarRelatorio() {
-    let html = "<table><thead><tr><th>Aluno</th><th>Disciplinas</th><th>Média/Freq</th></tr></thead><tbody>";
+    let html = "<table><thead><tr><th>NomeAluno</th><th>Disciplinas</th><th>Média/Freq</th></tr></thead><tbody>";
+    let html1 = "<table><thead><tr><th>NomeProfessor</th>";
     let encontrou = false;
     
     let BANCO = JSON.parse(localStorage.getItem('db_alunos'));
     // Percorre cada chave (nome de usuário) no banco
     for (let nome in BANCO) {
         let user = BANCO[nome];
+        let detalhes = "";
 
         // Filtra apenas quem é do tipo "aluno"
         if (user.tipo === "Aluno") {
             encontrou = true;
-            let detalhes = "";
             
             // Pega as matérias desse aluno específico
             for (let m in user.materias) {
@@ -81,6 +83,11 @@ function gerarRelatorio() {
                         <td style="text-align: left;">${detalhes || "Sem notas"}</td>
                         <td>${calcularMediaSimples(user.materias)}</td>
                      </tr>`;
+        }else if (user.tipo === "Professor") {
+            encontrou = true;
+            html1 += `<tr>
+                        <td><b>${nome}</b></td>
+                     </tr>`;
         }
     }
 
@@ -88,6 +95,8 @@ function gerarRelatorio() {
         
     html += "</tbody></table>";
     document.getElementById('relatorio-lista').innerHTML = html;
+    html1 += "</tbody></table>";
+    document.getElementById('relatorio-listaP').innerHTML = html1;
 }
 
 /* =========================
@@ -109,11 +118,21 @@ function gerarRelatorio() {
         let nome = document.getElementById('n').value;
         let senha = document.getElementById('s').value;
         let db = JSON.parse(localStorage.getItem('db_alunos') || '{}');
+        const select = document.getElementById('novo_tipo');
         
-        db[nome] = { senha: senha, tipo: "Aluno", materias: {} };
-        localStorage.setItem('db_alunos', JSON.stringify(db));
-        alert("Aluno cadastrado!");
+        console.log(select.value)
+
+        if(select.value == "aluno"){
+            db[nome] = { senha: senha, tipo: "Aluno", materias: {} };
+            localStorage.setItem('db_alunos', JSON.stringify(db));
+            alert("Aluno cadastrado!");
+        }else{
+            db[nome] = { senha: senha, tipo: "Professor"};
+            localStorage.setItem('db_alunos', JSON.stringify(db));
+            alert("Professor cadastrado!");
+        }
     }
+
 
 </script>
 
