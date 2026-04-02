@@ -70,8 +70,8 @@
         if (userObj && userObj.senha === s) {
             localStorage.setItem('usuario_ativo', u); // Salva quem logou
             window.location.href = "Modulo"+userObj.tipo + ".html"; // Redireciona: LoginAdmin.html, LoginProfessor.html ou LoginAluno.html
-            // const usuario = userObj[u];
-            
+
+            // const usuario = userObj[u];      
             //     if (usuario.tipo === "admin") {
             //         mostrar('painel-admin');
             //     } 
@@ -81,10 +81,11 @@
             //     else if (usuario.tipo === "aluno") {
             //         carregarBoletim(u);
             //     }
-                } else {
-                    alert("Usuário ou senha inválidos!");
-                }
-        } 
+
+        } else {
+            alert("Usuário ou senha inválidos!");
+        }
+    } 
 
     
     </script>

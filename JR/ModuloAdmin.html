@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel do Professor</title>
+<link rel="stylesheet" href="MainCss.css">
+
+<body>
+<div class="ModuloProfessor">
+
+  <div class="container">
+
+    <h1 class="titulo">Painel do Administrador</h1>
+
+    <h2 class="subtitulo" id="nomeProfessor">Bem-vindo</h2>
+
+<div id="painel-admin" class="card" style="width: 500px;">
+    <hr>
+    <h4>Cadastrar Novo Usuário</h4>
+    <input type="text" id="novo_nome" placeholder="Nome do Usuário">
+    <input type="password" id="nova_senha" placeholder="Senha">
+    <select id="novo_tipo">
+        <option value="aluno">Aluno</option>
+        <option value="professor">Professor</option>
+    </select>
+    <button onclick="cadastrar()">Salvar Usuário</button>
+    
+    <hr>
+    <h4>Relatório Geral de Alunos</h4>
+    <button onclick="gerarRelatorio()" style="background: #17a2b8;">Atualizar Relatório</button>
+    <div id="relatorio-lista" style="margin-top: 15px; font-size: 0.85em;"></div>
+
+    <button class="btn-sair" onclick="sair()">Sair</button>
+</div>
+
+<script>
+/* =========================
+   PROTEÇÃO DE PÁGINA
+========================= */
+let usuario = JSON.parse(localStorage.getItem("usuario_ativo"));
+
+if (!usuario || usuario.tipo !== "Admin") {
+  window.location.href = "LoginAdmin.html";
+} else {
+  document.getElementById("nomeProfessor").innerText =
+    "Bem-vindo, " + usuario.login;
+}
+
+/* =========================
+   LOGOUT
+========================= */
+function sair() {
+  localStorage.removeItem("usuario_ativo");
+  window.location.href = "index.html";
+}
+
+/* =========================
+   GERAR RELATÓRIO GERAL
+========================= */
+function gerarRelatorio() {
+    let html = "<table><thead><tr><th>Aluno</th><th>Disciplinas</th><th>Média/Freq</th></tr></thead><tbody>";
+    let encontrou = false;
+
+    // Percorre cada chave (nome de usuário) no banco
+    for (let nome in BANCO) {
+        let user = BANCO[nome];
+
+        // Filtra apenas quem é do tipo "aluno"
+        if (user.tipo === "aluno") {
+            encontrou = true;
+            let detalhes = "";
+            
+            // Pega as matérias desse aluno específico
+            for (let m in user.materias) {
+                detalhes += `${m}: ${user.materias[m].nota} (F:${user.materias[m].freq}%)<br>`;
+            }
+
+            html += `<tr>
+                        <td><b>${nome}</b></td>
+                        <td style="text-align: left;">${detalhes || "Sem notas"}</td>
+                        <td>${calcularMediaSimples(user.materias)}</td>
+                     </tr>`;
+        }
+    }
+
+    if (!encontrou) html += "<tr><td colspan='3'>Nenhum aluno cadastrado.</td></tr>";
+        
+    html += "</tbody></table>";
+    document.getElementById('relatorio-lista').innerHTML = html;
+}
+
+/* =========================
+   FUNÇÃO AUXILIAR: CALCULA MÉDIA RÁPIDA PARA O RELATÓRIO
+========================= */
+    function calcularMediaSimples(materias) {
+        let soma = 0, qtd = 0;
+        for (let m in materias) {
+            soma += parseFloat(materias[m].nota);
+            qtd++;
+        }
+        return qtd > 0 ? (soma / qtd).toFixed(1) : "-";
+    }
+
+</script>
+
+</body>
+
+
+
+
+</html>
