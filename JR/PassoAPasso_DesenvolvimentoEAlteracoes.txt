@@ -1,0 +1,17 @@
+*Desde o inicio desse bloco de notas, já foi realizado*
+->
+*Mudança do Template geral para a versão modificada por Junior
+*Adição de paginas de Login Separadas()
+*Adição de Pagina de escolha para Login()
+*Criação de Pagina de Boletim para Logon em aluno()
+*Criação de Pagina de ModuloProfessor para Logon em prof()
+*Mudança do index para Login Central modificado por Ricardo
+*Desuso dos Cards(Aluno,Professor,Administrador) para informar Login()
+*Adição do Card(id:tela-login class:card active)
+*Criação do bd=BANCO para usuarios padroes no proprio Arquivo index
+*Desuso da Função mostrar() para diferentes logins em um unico arquivo
+*Mudança da Função autenticar() para procurar usuarios no banco e manter ativo em paginas de html diferentes
+*Desuso do if() para mostrar diferentes Cards de usuarios no mesmo html
+*Mudança da Função autenticar() para ir em paginas diferentes dependendo do tipo de usuario fazendo Login
+* 
+<_
