@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel do Professor</title>
+<link rel="stylesheet" href="MainCss.css">
+</head>
+
+<body>
+
+<div class="ModuloProfessor">
+
+  <div class="container">
+
+    <h1 class="titulo">Painel do Professor</h1>
+
+    <h2 class="subtitulo" id="nomeProfessor">Bem-vindo</h2>
+
+    <!-- Seleção de disciplina -->
+    <div class="box-disciplina">
+      <label>Disciplina:</label>
+      <select id="disciplina">
+        <option>Matemática</option>
+        <option>Português</option>
+        <option>História</option>
+      </select>
+    </div>
+
+    <!-- Tabela de alunos -->
+    <table class="tabela-professor">
+      <tr>
+        <th>Aluno</th>
+        <th>Nota</th>
+        <th>Faltas</th>
+        <th>Ação</th>
+      </tr>
+
+      <tr>
+        <td>João Silva</td>
+        <td><input type="number" placeholder="0 - 10"></td>
+        <td><input type="number" placeholder="%"></td>
+        <td><button class="btn-salvar">Salvar</button></td>
+      </tr>
+
+      <tr>
+        <td>Maria Souza</td>
+        <td><input type="number"></td>
+        <td><input type="number"></td>
+        <td><button class="btn-salvar">Salvar</button></td>
+      </tr>
+
+    </table>
+
+    <!-- Botão sair -->
+    <div class="CentralizarBotao">
+      <a href="#" class="btn-sair" onclick="sair()">Sair</a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+/* =========================
+   PROTEÇÃO DE PÁGINA
+========================= */
+let usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+if (!usuario || usuario.tipo !== "professor") {
+  window.location.href = "LoginProfessor.html";
+} else {
+  document.getElementById("nomeProfessor").innerText =
+    "Bem-vindo, " + usuario.login;
+}
+
+/* =========================
+   LOGOUT
+========================= */
+function sair() {
+  localStorage.removeItem("usuarioLogado");
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

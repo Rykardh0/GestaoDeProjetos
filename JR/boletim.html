@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Boletim</title>
+<link rel="stylesheet" href="MainCss.css">
+
+</head>
+
+<body>
+<div class="ModuloBoletim">
+  
+  <div class="container">
+
+    <h1 class="titulo">Aluno: Jóse Everton Almeida Santos Junior</h1>
+    <h2 class="titulo">Boletim do Aluno</h2>
+
+    <table class="tabela-boletim">
+        <tr>
+            <th>Disciplina</th>
+            <th>Nota</th>
+            <th>Faltas</th>
+            <th>Situação</th>
+        </tr>
+
+        <tr>
+            <td>Matemática</td>
+            <td>8.5</td>
+            <td>100%</td>
+            <td class="status-aprovado">Aprovado</td>
+        </tr>
+
+        <tr>
+            <td>Português</td>
+            <td>7.0</td>
+            <td>70%</td>
+            <td class="status-aprovado">Aprovado</td>
+        </tr>
+
+        <tr>
+            <td>História</td>
+            <td>9.0</td>
+            <td>90%</td>
+            <td class="status-aprovado">Aprovado</td>
+        </tr>
+
+        <tr>
+            <td>Geografia</td>
+            <td>5.5</td>
+            <td>80%</td>
+            <td class="status-recuperacao">Recuperação</td>
+        </tr>
+    </table>
+
+    <div class="CentralizarBotão">
+        <a href="index.html" class="btn-sair">Sair</a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+let aluno = localStorage.getItem("alunoLogado");
+
+if (!aluno) {
+    window.location.href = "LoginAluno.html";
+}
+</script>
+
+</body>
+</html>

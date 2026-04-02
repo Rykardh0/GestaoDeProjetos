@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Acadêmico - Acesso Restrito</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; background: #e9ecef; margin: 0; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 380px; margin-top: 50px; display: none; }
+        .active { display: block; }
+        nav { background: #2c3e50; padding: 15px; width: 100%; text-align: center; color: white; font-weight: bold; }
+        input, select, button { width: 100%; margin: 10px 0; padding: 12px; border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box; }
+        button { cursor: pointer; background: #007bff; color: white; border: none; font-size: 16px; }
+        button:hover { background: #0056b3; }
+        .btn-sair { background: #dc3545; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        .user-info { font-size: 0.9em; color: #666; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+<nav id="nav-header">Sistema de Gestão Acadêmica</nav>
+
+<!-- 1. TELA DE LOGIN ÚNICA -->
+<div id="tela-login" class="card active">
+    <h2>Login</h2>
+    <p class="user-info">Identifique-se para acessar o painel</p>
+    <input type="text" id="user_input" placeholder="Usuário">
+    <input type="password" id="pass_input" placeholder="Senha">
+    <button onclick="autenticar()">Entrar no Sistema</button>
+    <p style="font-size: 12px; color: #888;">Contas: admin/123, prof/123, aluno/123</p>
+</div>
+
+<!-- 2. PAINEL ADMINISTRATIVO -->
+<div id="painel-admin" class="card" style="width: 500px;">
+    <h2>Painel do Administrador</h2>
+    <hr>
+    <h4>Cadastrar Novo Usuário</h4>
+    <input type="text" id="novo_nome" placeholder="Nome do Usuário">
+    <input type="password" id="nova_senha" placeholder="Senha">
+    <select id="novo_tipo">
+        <option value="aluno">Aluno</option>
+        <option value="professor">Professor</option>
+    </select>
+    <button onclick="cadastrar()">Salvar Usuário</button>
+    
+    <hr>
+    <h4>Relatório Geral de Alunos</h4>
+    <button onclick="gerarRelatorio()" style="background: #17a2b8;">Atualizar Relatório</button>
+    <div id="relatorio-lista" style="margin-top: 15px; font-size: 0.85em;"></div>
+
+    <button class="btn-sair" onclick="logout()">Sair</button>
+</div>
+
+<!-- 3. PAINEL DO PROFESSOR -->
+<div id="painel-professor" class="card">
+    <h2>Painel do Professor</h2>
+    <hr>
+    <h4>Lançar Notas e Frequência</h4>
+    <input type="text" id="aluno_alvo" placeholder="Nome exato do Aluno">
+    <input type="text" id="materia" placeholder="Disciplina">
+    <input type="number" id="nota" placeholder="Nota">
+    <input type="number" id="freq" placeholder="% Frequência">
+    <button onclick="lancar()" style="background: #f39c12;">Lançar no Sistema</button>
+    <button class="btn-sair" onclick="logout()">Sair</button>
+</div>
+
+<!-- 4. PAINEL DO ALUNO -->
+<div id="painel-aluno" class="card">
+    <h2 id="boletim-nome">Meu Boletim</h2>
+    <table id="tabela-boletim">
+        <thead>
+            <tr><th>Matéria</th><th>Nota</th><th>Freq</th></tr>
+        </thead>
+        <tbody id="corpo-boletim"></tbody>
+    </table>
+    <button class="btn-sair" onclick="logout()">Sair</button>
+</div>
+
+<script>
+    // BANCO DE DADOS NO CÓDIGO
+    let BANCO = {
+        "admin": { senha: "123", tipo: "admin" },
+        "prof":  { senha: "123", tipo: "professor" },
+        "aluno": { senha: "123", tipo: "aluno", materias: {} }
+    };
+
+    function mostrar(id) {
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+
+    // LÓGICA DE LOGIN (A "CHAVE" DO SISTEMA)
+    function autenticar() {
+        const u = document.getElementById('user_input').value;
+        const s = document.getElementById('pass_input').value;
+
+        if (BANCO[u] && BANCO[u].senha === s) {
+            const usuario = BANCO[u];
+            
+            if (usuario.tipo === "admin") {
+                mostrar('painel-admin');
+            } 
+            else if (usuario.tipo === "professor") {
+                mostrar('painel-professor');
+            } 
+            else if (usuario.tipo === "aluno") {
+                carregarBoletim(u);
+            }
+        } else {
+            alert("Usuário ou senha inválidos!");
+        }
+    }
+
+    // FUNÇÕES DO ADMIN
+    function cadastrar() {
+        const n = document.getElementById('novo_nome').value;
+        const s = document.getElementById('nova_senha').value;
+        const t = document.getElementById('novo_tipo').value;
+
+        if (n && s) {
+            BANCO[n] = { senha: s, tipo: t, materias: {} };
+            alert(`Usuário ${n} (${t}) criado com sucesso!`);
+        }
+    }
+
+    // FUNÇÕES DO PROFESSOR
+    function lancar() {
+        const nome = document.getElementById('aluno_alvo').value;
+        const mat = document.getElementById('materia').value;
+        const n = document.getElementById('nota').value;
+        const f = document.getElementById('freq').value;
+
+        if (BANCO[nome] && BANCO[nome].tipo === "aluno") {
+            BANCO[nome].materias[mat] = { nota: n, freq: f };
+            alert("Dados lançados!");
+        } else {
+            alert("Erro: Este aluno não existe no sistema!");
+        }
+    }
+
+    // FUNÇÕES DO ALUNO
+    function carregarBoletim(nome) {
+        const aluno = BANCO[nome];
+        document.getElementById('boletim-nome').innerText = "Boletim de " + nome;
+        let html = "";
+        for (let m in aluno.materias) {
+            html += `<tr><td>${m}</td><td>${aluno.materias[m].nota}</td><td>${aluno.materias[m].freq}%</td></tr>`;
+        }
+        document.getElementById('corpo-boletim').innerHTML = html || "<tr><td colspan='3'>Nenhuma nota lançada.</td></tr>";
+        mostrar('painel-aluno');
+    }
+
+    function logout() {
+        document.getElementById('user_input').value = "";
+        document.getElementById('pass_input').value = "";
+        mostrar('tela-login');
+    }
+    // NOVA FUNÇÃO: GERAR RELATÓRIO GERAL
+    function gerarRelatorio() {
+        let html = "<table><thead><tr><th>Aluno</th><th>Disciplinas</th><th>Média/Freq</th></tr></thead><tbody>";
+        let encontrou = false;
+
+        // Percorre cada chave (nome de usuário) no banco
+        for (let nome in BANCO) {
+            let user = BANCO[nome];
+
+            // Filtra apenas quem é do tipo "aluno"
+            if (user.tipo === "aluno") {
+                encontrou = true;
+                let detalhes = "";
+                
+                // Pega as matérias desse aluno específico
+                for (let m in user.materias) {
+                    detalhes += `${m}: ${user.materias[m].nota} (F:${user.materias[m].freq}%)<br>`;
+                }
+
+                html += `<tr>
+                            <td><b>${nome}</b></td>
+                            <td style="text-align: left;">${detalhes || "Sem notas"}</td>
+                            <td>${calcularMediaSimples(user.materias)}</td>
+                         </tr>`;
+            }
+        }
+
+        if (!encontrou) html += "<tr><td colspan='3'>Nenhum aluno cadastrado.</td></tr>";
+        
+        html += "</tbody></table>";
+        document.getElementById('relatorio-lista').innerHTML = html;
+    }
+
+    // FUNÇÃO AUXILIAR: CALCULA MÉDIA RÁPIDA PARA O RELATÓRIO
+    function calcularMediaSimples(materias) {
+        let soma = 0, qtd = 0;
+        for (let m in materias) {
+            soma += parseFloat(materias[m].nota);
+            qtd++;
+        }
+        return qtd > 0 ? (soma / qtd).toFixed(1) : "-";
+    }
+</script>
+
+</body>
+</html>
