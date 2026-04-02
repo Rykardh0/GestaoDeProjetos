@@ -48,37 +48,45 @@
 <script>
     // BANCO DE DADOS NO CÓDIGO
     let BANCO = {
-        "admin": { senha: "123", tipo: "admin" },
-        "prof":  { senha: "123", tipo: "professor" },
-        "aluno": { senha: "123", tipo: "aluno", materias: {} }
+        "admin": { senha: "123", tipo: "Admin" },
+        "prof":  { senha: "123", tipo: "Professor" },
+        "aluno": { senha: "123", tipo: "Aluno", materias: {} }
     };
 
-    function mostrar(id) {
-        document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-    }
+    // function mostrar(id) {
+    //     document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+    //     document.getElementById(id).classList.add('active');
+    // }
 
-    // LÓGICA DE LOGIN (A "CHAVE" DO SISTEMA)
+    // LÓGICA DE LOGIN (Sistema Principal)
     function autenticar() {
         const u = document.getElementById('user_input').value;
         const s = document.getElementById('pass_input').value;
+        
+        //Busca no banco
+        let db_alunos = JSON.parse(localStorage.getItem('db_alunos') || '{}');
+        let userObj = BANCO[u] || db_alunos[u];
 
-        if (BANCO[u] && BANCO[u].senha === s) {
-            const usuario = BANCO[u];
+        if (userObj && userObj.senha === s) {
+            localStorage.setItem('usuario_ativo', u); // Salva quem logou
+            window.location.href = "Login"+userObj.tipo + ".html"; // Redireciona: LoginAdmin.html, LoginProfessor.html ou LoginAluno.html
+            // const usuario = userObj[u];
             
-            if (usuario.tipo === "admin") {
-                mostrar('painel-admin');
-            } 
-            else if (usuario.tipo === "professor") {
-                mostrar('painel-professor');
-            } 
-            else if (usuario.tipo === "aluno") {
-                carregarBoletim(u);
-            }
-        } else {
-            alert("Usuário ou senha inválidos!");
-        }
-    }
+            //     if (usuario.tipo === "admin") {
+            //         mostrar('painel-admin');
+            //     } 
+            //     else if (usuario.tipo === "professor") {
+            //         mostrar('painel-professor');
+            //     } 
+            //     else if (usuario.tipo === "aluno") {
+            //         carregarBoletim(u);
+            //     }
+                } else {
+                    alert("Usuário ou senha inválidos!");
+                }
+        } 
+
+    
     </script>
 
 </body>
