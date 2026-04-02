@@ -17,8 +17,8 @@
 <div id="painel-admin" class="card" style="width: 500px;">
     <hr>
     <h4>Cadastrar Novo Usuário</h4>
-    <input type="text" id="novo_nome" placeholder="Nome do Usuário">
-    <input type="password" id="nova_senha" placeholder="Senha">
+    <input type="text" id="n" placeholder="Nome do Usuário">
+    <input type="password" id="s" placeholder="Senha">
     <select id="novo_tipo">
         <option value="aluno">Aluno</option>
         <option value="professor">Professor</option>
@@ -39,12 +39,12 @@
 ========================= */
 let usuario = JSON.parse(localStorage.getItem("usuario_ativo"));
 
-if (!usuario || usuario.tipo !== "Admin") {
-  window.location.href = "LoginAdmin.html";
-} else {
-  document.getElementById("nomeProfessor").innerText =
-    "Bem-vindo, " + usuario.login;
-}
+// if (!usuario || usuario.tipo !== "Admin") {
+//   window.location.href = "LoginAdmin.html";
+// } else {
+//   document.getElementById("nomeProfessor").innerText =
+//     "Bem-vindo, " + usuario.login;
+// }
 
 /* =========================
    LOGOUT
@@ -60,13 +60,14 @@ function sair() {
 function gerarRelatorio() {
     let html = "<table><thead><tr><th>Aluno</th><th>Disciplinas</th><th>Média/Freq</th></tr></thead><tbody>";
     let encontrou = false;
-
+    
+    let BANCO = JSON.parse(localStorage.getItem('db_alunos'));
     // Percorre cada chave (nome de usuário) no banco
     for (let nome in BANCO) {
         let user = BANCO[nome];
 
         // Filtra apenas quem é do tipo "aluno"
-        if (user.tipo === "aluno") {
+        if (user.tipo === "Aluno") {
             encontrou = true;
             let detalhes = "";
             
@@ -99,6 +100,19 @@ function gerarRelatorio() {
             qtd++;
         }
         return qtd > 0 ? (soma / qtd).toFixed(1) : "-";
+    }
+
+/* =========================
+   CADASTRAR
+========================= */
+    function cadastrar() {
+        let nome = document.getElementById('n').value;
+        let senha = document.getElementById('s').value;
+        let db = JSON.parse(localStorage.getItem('db_alunos') || '{}');
+        
+        db[nome] = { senha: senha, tipo: "Aluno", materias: {} };
+        localStorage.setItem('db_alunos', JSON.stringify(db));
+        alert("Aluno cadastrado!");
     }
 
 </script>
