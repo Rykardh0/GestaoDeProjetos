@@ -104,14 +104,14 @@ function gerarRelatorio() {
 /* =========================
    FUNÇÃO AUXILIAR: CALCULA MÉDIA RÁPIDA PARA O RELATÓRIO
 ========================= */
-    function calcularMediaSimples(materias) {
-        let soma = 0, qtd = 0;
-        for (let m in materias) {
-            soma += parseFloat(materias[m].nota);
-            qtd++;
-        }
-        return qtd > 0 ? (soma / qtd).toFixed(1) : "-";
-    }
+    // function calcularMediaSimples(materias) {
+    //     let soma = 0, qtd = 0;
+    //     for (let m in materias) {
+    //         soma += parseFloat(materias[m].nota);
+    //         qtd++;
+    //     }
+    //     return qtd > 0 ? (soma / qtd).toFixed(1) : "-";
+    // }
 
 /* =========================
    CADASTRAR
@@ -139,8 +139,4 @@ function gerarRelatorio() {
 </script>
 
 </body>
-
-
-
-
 </html>

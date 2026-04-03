@@ -1,0 +1,14 @@
+<h2>Meu Boletim</h2>
+<div id="box"></div>
+<script>
+    let user = localStorage.getItem('usuario_ativo');
+    let db = JSON.parse(localStorage.getItem('db_alunos'));
+    let dados = db[user];
+
+    let res = `<h3>Olá, ${user}</h3>`;
+    for(let m in dados.materias) {
+        res += `<p>${m}: ${dados.materias[m].nota}</p>`;
+    }
+    document.getElementById('box').innerHTML = res;
+</script>
+<a href="index.html">Sair</a>
