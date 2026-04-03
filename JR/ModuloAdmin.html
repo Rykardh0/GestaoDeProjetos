@@ -59,7 +59,7 @@ function sair() {
    GERAR RELATÓRIO GERAL
 ========================= */
 function gerarRelatorio() {
-    let html = "<table><thead><tr><th>NomeAluno</th><th>Disciplinas</th><th>Média/Freq</th></tr></thead><tbody>";
+    let html = "<table><thead><tr><th>NomeAluno</th><th>Disciplinas/Notas</th><th>Disciplinas/Frequência</th></tr></thead><tbody>";
     let html1 = "<table><thead><tr><th>NomeProfessor</th>";
     let encontrou = false;
     
@@ -67,7 +67,8 @@ function gerarRelatorio() {
     // Percorre cada chave (nome de usuário) no banco
     for (let nome in BANCO) {
         let user = BANCO[nome];
-        let detalhes = "";
+        let detalhesN = "";
+        let detalhesF = "";
 
         // Filtra apenas quem é do tipo "aluno"
         if (user.tipo === "Aluno") {
@@ -75,13 +76,14 @@ function gerarRelatorio() {
             
             // Pega as matérias desse aluno específico
             for (let m in user.materias) {
-                detalhes += `${m}: ${user.materias[m].nota} (F:${user.materias[m].freq}%)<br>`;
+                detalhesN += `${m}: ${user.materias[m].nota}<br>`;
+                detalhesF += `${m}: ${user.materias[m].falta}%)<br>`;
             }
 
             html += `<tr>
                         <td><b>${nome}</b></td>
-                        <td style="text-align: left;">${detalhes || "Sem notas"}</td>
-                        <td>${calcularMediaSimples(user.materias)}</td>
+                        <td style="text-align: left;">${detalhesN || "Sem notas"}</td>
+                        <td style="text-align: left;">${detalhesF || "Sem Frequencia"}</td>
                      </tr>`;
         }else if (user.tipo === "Professor") {
             encontrou = true;

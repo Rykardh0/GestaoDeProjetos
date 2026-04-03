@@ -20,21 +20,6 @@
         <h2>Informe seu Usuario e Senha!</h2>
 
         <div class="cards">
-            <!-- <a href="LoginAluno.html" class="card" >
-                <i class="fas fa-user-graduate" ></i>
-                Aluno
-            </a>
-
-            <a href="LoginProfessor.html" class="card">
-                <i class="fas fa-chalkboard-teacher"></i>
-                Professor
-            </a>
-
-            <a href="LoginAdmin.html" class="card green">
-                <i class="fas fa-user-cog"></i>
-                Administrador
-            </a> -->
-
             <a id="tela-login" class="card active">
                 <p class="user-info">Identifique-se para acessar o painel</p>
                 <input type="text" id="user_input" placeholder="Usuário">
@@ -53,11 +38,6 @@
         "aluno": { senha: "123", tipo: "Aluno", materias: {} }
     };
 
-    // function mostrar(id) {
-    //     document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
-    //     document.getElementById(id).classList.add('active');
-    // }
-
     // LÓGICA DE LOGIN (Sistema Principal)
     function autenticar() {
         const u = document.getElementById('user_input').value;
@@ -70,24 +50,11 @@
         if (userObj && userObj.senha === s) {
             localStorage.setItem('usuario_ativo', u); // Salva quem logou
             window.location.href = "Modulo"+userObj.tipo + ".html"; // Redireciona: LoginAdmin.html, LoginProfessor.html ou LoginAluno.html
-
-            // const usuario = userObj[u];      
-            //     if (usuario.tipo === "admin") {
-            //         mostrar('painel-admin');
-            //     } 
-            //     else if (usuario.tipo === "professor") {
-            //         mostrar('painel-professor');
-            //     } 
-            //     else if (usuario.tipo === "aluno") {
-            //         carregarBoletim(u);
-            //     }
-
         } else {
             alert("Usuário ou senha inválidos!");
         }
     } 
 
-    
     </script>
 
 </body>

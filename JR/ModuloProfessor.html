@@ -15,7 +15,14 @@
     <h1 class="titulo">Painel do Professor</h1>
     <h2 class="subtitulo" id="nomeProfessor">Bem-vindo</h2>
 
-    <!-- Seleção de disciplina -->
+    <h3>Painel Professor</h3>
+    <input id="aluno" placeholder="Nome do Aluno">
+    <input id="mat" placeholder="Matéria">
+    <input id="nota" placeholder="Nota">
+    <input id="falta" placeholder="Frequência">
+    <button onclick="lancar()">Lançar</button>
+
+    <!-- Seleção de disciplina
     <div class="box-disciplina">
       <label>Disciplina:</label>
       <select id="disciplina">
@@ -23,10 +30,10 @@
         <option>Português</option>
         <option>História</option>
       </select>
-    </div>
+    </div> -->
 
     <!-- Tabela de alunos -->
-    <table class="tabela-professor">
+    <!-- <table class="tabela-professor">
       <tr>
         <th>Aluno</th>
         <th>Nota</th>
@@ -48,7 +55,7 @@
         <td><button class="btn-salvar">Salvar</button></td>
       </tr>
 
-    </table>
+    </table> -->
 
     <!-- Botão sair -->
     <div class="CentralizarBotao">
@@ -65,12 +72,12 @@
 ========================= */
 let usuario = JSON.parse(localStorage.getItem("usuario_ativo"));
 
-if (!usuario || usuario.tipo !== "Professor") {
-  window.location.href = "LoginProfessor.html";
-} else {
-  document.getElementById("nomeProfessor").innerText =
-    "Bem-vindo, " + usuario.login;
-}
+// if (!usuario || usuario.tipo !== "Professor") {
+//   window.location.href = "LoginProfessor.html";
+// } else {
+//   document.getElementById("nomeProfessor").innerText =
+//     "Bem-vindo, " + usuario.login;
+// }
 
 /* =========================
    LOGOUT
@@ -79,6 +86,20 @@ function sair() {
   localStorage.removeItem("usuario_ativo");
   window.location.href = "index.html";
 }
+
+function lancar() {
+        let nome = document.getElementById('aluno').value;
+        let mat = document.getElementById('mat').value;
+        let nota = document.getElementById('nota').value;
+        let falta = document.getElementById('falta').value;
+        
+        let db = JSON.parse(localStorage.getItem('db_alunos'));
+        if(db[nome]) {
+            db[nome].materias[mat] = { nota: nota, falta: falta};
+            localStorage.setItem('db_alunos', JSON.stringify(db));
+            alert("Nota lançada!");
+        }
+    }
 </script>
 
 </body>
