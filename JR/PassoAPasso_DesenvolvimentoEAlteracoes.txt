@@ -25,5 +25,5 @@
 *Mudanças no Arquivo ModuloAdmin - adição no script(GERAR RELATÓRIO GERAL e CADASTRAR)
 *Mudanças no Arquivo ModuloAdmin - alterar script(GERAR RELATÓRIO GERAL e CADASTRAR)
 *Mudanças no Arquivo ModuloProfessor - alterar script(LANCAR)
-*Criação do Arquivo ModuloAluno
+*Retirada dos arquivos em Desuso
 <_
