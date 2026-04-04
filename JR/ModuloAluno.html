@@ -1,3 +1,74 @@
+<body class="Body-Adm">
+<link rel="stylesheet" href="MainCss.css">
+
+  <div class="topo">
+    <h1 class="titulo">Boletim do Aluno</h1>
+    <h2 id="nomeAluno"></h2>
+  </div>
+
+  <div class="container-painel">
+
+    <div class="PainelRelatorio">
+      <h2>Minhas Notas</h2>
+      <div id="box"></div>
+    </div>
+
+  </div>
+
+  <button class="btn-sair" onclick="sair()">Sair</button>
+
+</body>
+
+<script>
+let user = localStorage.getItem('usuario_ativo');
+let db = JSON.parse(localStorage.getItem('db_alunos'));
+let dados = db[user];
+
+document.getElementById('nomeAluno').innerText = "Olá, " + user;
+
+let tabela = `
+<table>
+  <thead>
+    <tr>
+      <th>Disciplina</th>
+      <th>Nota</th>
+      <th>Frequência</th>
+    </tr>
+  </thead>
+  <tbody>
+`;
+
+if (dados.materias && Object.keys(dados.materias).length > 0) {
+  for (let m in dados.materias) {
+    tabela += `
+      <tr>
+        <td>${m}</td>
+        <td>${dados.materias[m].nota}</td>
+        <td>${dados.materias[m].falta}%</td>
+      </tr>
+    `;
+  }
+} else {
+  tabela += `
+    <tr>
+      <td colspan="3">Nenhuma disciplina cadastrada</td>
+    </tr>
+  `;
+}
+
+tabela += "</tbody></table>";
+
+document.getElementById('box').innerHTML = tabela;
+
+/* LOGOUT */
+function sair() {
+  localStorage.removeItem("usuario_ativo");
+  window.location.href = "index.html";
+}
+</script>
+
+
+<!-- <body>
 <h2>Meu Boletim</h2>
 <div id="box"></div>
 <script>
@@ -21,3 +92,4 @@
 
 </script>
 <button class="btn-sair" onclick="sair()">Sair</button>
+</body>-->

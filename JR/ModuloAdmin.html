@@ -5,34 +5,41 @@
 <title>Painel do Professor</title>
 <link rel="stylesheet" href="MainCss.css">
 
-<body>
-<div class="ModuloProfessor">
+<body class="Body-Adm">
 
-  <div class="container">
-
+  <div class="topo">
     <h1 class="titulo">Painel do Administrador</h1>
+  </div>
 
-    <h2 class="subtitulo" id="nomeProfessor">Bem-vindo</h2>
+  <div class="container-painel">
 
-<div id="painel-admin" class="card" style="width: 500px;">
-    <hr>
-    <h4>Cadastrar Novo Usuário</h4>
-    <input type="text" id="n" placeholder="Nome do Usuário">
-    <input type="password" id="s" placeholder="Senha">
-    <select id="novo_tipo">
+    <div class="PainelCadastro">
+      <h2 >Cadastrar Novo Usuário</h2>
+
+      <input type="text" id="n" placeholder="Nome do Usuário">
+      <input type="password" id="s" placeholder="Senha">
+
+      <select id="novo_tipo">
         <option value="aluno">Aluno</option>
         <option value="professor">Professor</option>
-    </select>
-    <button onclick="cadastrar()">Salvar Usuário</button>
-    
-    <hr>
-    <h4>Relatório Geral de Alunos</h4>
-    <button onclick="gerarRelatorio()" style="background: #17a2b8;">Atualizar Relatório</button>
-    <div id="relatorio-lista" style="margin-top: 15px; font-size: 0.85em;"></div>
-    <div id="relatorio-listaP" style="margin-top: 15px; font-size: 0.85em;"></div>
+      </select>
 
-    <button class="btn-sair" onclick="sair()">Sair</button>
-</div>
+      <button onclick="cadastrar()">Salvar Usuário</button>
+    </div>
+
+    <div class="PainelRelatorio">
+      <h2>Relatório Geral</h2>
+      <button onclick="gerarRelatorio()">Atualizar</button>
+
+      <div id="relatorio-lista" class="Relatorio"></div>
+      <div id="relatorio-listaP" class="Relatorio"></div>
+    </div>
+
+  </div>
+
+  <button class="btn-sair" onclick="sair()">Sair</button>
+
+
 
 <script>
 /* =========================
@@ -137,6 +144,4 @@ function gerarRelatorio() {
 
 
 </script>
-
-</body>
 </html>

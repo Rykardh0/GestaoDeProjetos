@@ -1,64 +1,55 @@
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
+    /* Pag Index */
+    .BotaoIndex {
+    background-color: #23a503; /* verde */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
     }
 
-    body {
-        background-color: #f2f2f2;
+    /* efeito ao passar o mouse */
+    .BotaoIndex:hover {
+    background-color: #000800;
+    transform: scale(1.05);
     }
 
-    .header {
-        background: linear-gradient(to right, #15ff00, #074474);
-        height: 180px;
-        position: relative;
+    /* efeito ao clicar */
+    .BotaoIndex:active {
+    transform: scale(0.98);
     }
 
-    .header img {
-        position: absolute;
-        left: 50px;
-        top: 30px;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        border: 4px solid white;
-        object-fit: cover;
+    .BodyIndex {
+    background-image: url('https://www.meupositivo.com.br/doseujeito/wp-content/uploads/2023/04/Confira-8-conceitos-que-voce-precisa-entender-para-entrar-no-metaverso.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;       
+    margin: 0;
+    height: 100vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
     }
 
-    .container {
-        text-align: center;
-        margin-top: 40px;
-    }
 
-    .container h2 {
-        margin-bottom: 30px;
-        color: #2c3e50;
-    }
 
     .cards {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
     }
 
     .card {
-        width: 140px;
-        height: 120px;
-        background-color: #5fa0d6;
-        color: white;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        text-decoration: none;
-        padding: 10px;
-        transition: 0.3s;
-        font-weight: bold;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  background: #ffffff;
+  padding: 200px;
+  border-radius: 20px;
     }
 
     .card i {
@@ -66,226 +57,280 @@
         margin-bottom: 10px;
     }
 
-    .card:hover {
-        background-color: #3f7fb5;
-        transform: scale(1.05);
+    h2, p{
+        margin-bottom: 10px;
     }
 
-    .green {
-        background-color: #3cb371;
+    .lado-imagem img {
+    width: 200px;
     }
 
-    .green:hover {
-        background-color: #2e8b57;
+    /* lado do formulário */
+    .lado-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     }
 
-
-    .login-container {
-        display: flex;
-        height: 100vh;
+    /* inputs */
+    .UserSenha {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     }
 
-    .login-left {
-        width: 60%;
-        background: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') no-repeat center;
-        background-size: cover;
+    .UserSenha input {
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+    background: #f9f9f9;
     }
 
-    .login-right {
-        width: 40%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #f5f5f5;
+    /* efeito ao clicar */
+    .UserSenha input:focus {
+    border-color: #6a0dad;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(106, 13, 173, 0.3);
     }
 
-    .login-box {
-        background: white;
-        padding: 30px;
-        border-radius: 10px;
-        width: 280px;
-        text-align: center;
+    /* placeholder mais suave */
+    .UserSenha input::placeholder {
+    color: #999;
     }
 
-    .login-box h2 {
-        margin-bottom: 20px;
-    }
+    .Userinfo {
+    font-size: 15px;
+    color: #000000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-    .login-box input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    .login-box button {
-        width: 100%;
-        padding: 10px;
-        background: #5fa0d6;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .login-box button:hover {
-        background: #3f7fb5;
-    }
-
-    .voltar {
-        display: block;
-        margin-top: 10px;
-        font-size: 12px;
-        text-decoration: none;
-        color: #555;
-    }
-
-        /* TABELA */
-    .tabela-boletim {
-        width: 80%;
-        margin: 30px auto;
-        border-collapse: collapse;
-        background: white;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-    .tabela-boletim th {
-        background-color: #5fa0d6;
-        color: white;
-        padding: 12px;
-    }
-
-    .tabela-boletim td {
-        padding: 10px;
-        text-align: center;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .tabela-boletim tr:hover {
-        background-color: #f2f2f2;
-    }
-
-    .titulo {
-        text-align: center;
-        margin-top: 30px;
-    }
-
-    .botaoSair {
-
-            width: 80px;
-            height: 80px;
-            background-color: #5fa0d6;
-            color: white;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            text-decoration: none;
-            padding: 10px;
-            transition: 0.3s;
-            font-weight: bold;
-        
-    }
-
-    .CentralizarBotão {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
     }
 
 
-/* ====== MÓDULO BOLETIM ====== */
-.ModuloBoletim {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #eeeeee, #fafafa);
-  min-height: 100vh;
 
+/* Módulo Admin */
+
+/* fundo geral */
+.Body-Adm {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #6a0dad, #6259b6);
+  color: #333;
+  
+}
+
+/* topo */
+.topo {
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+}
+
+/* container dos painéis */
+.container-painel {
   display: flex;
   justify-content: center;
-  align-items: center;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
 }
 
-/* ====== CARD CENTRAL ====== */
-.ModuloBoletim .container {
-  width: 100%;
-  max-width: 800px;
-  background: #fff;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+/* cards */
+.PainelCadastro,.PainelRelatorio {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* ====== TÍTULOS ====== */
-.ModuloBoletim .titulo {
-  text-align: center;
-  margin-bottom: 10px;
-  color: #333;
+
+/* inputs */
+input, select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-.ModuloBoletim h2.titulo {
-  font-weight: 400;
-  color: #777;
-  margin-bottom: 20px;
-}
-
-/* ====== TABELA ====== */
-.ModuloBoletim table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.ModuloBoletim th {
-  background: linear-gradient(135deg, #4facfe, #00c6ff);
+/* botão padrão */
+button {
+    
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #6a0dad;
   color: white;
-  padding: 12px;
-  text-align: center;
-}
-
-.ModuloBoletim td {
-  padding: 12px;
-  text-align: center;
-  border-bottom: 1px solid #eee;
-}
-
-.ModuloBoletim tr:hover {
-  background: #f5f5f5;
-}
-
-/* ====== STATUS ====== */
-.ModuloBoletim .status-aprovado {
-  color: #2ecc71;
-  font-weight: bold;
-}
-
-.ModuloBoletim .status-recuperacao {
-  color: #f39c12;
-  font-weight: bold;
-}
-
-/* ====== BOTÃO ====== */
-.CentralizarBotão {
-  text-align: center;
-  margin-top: 25px;
-}
-
-.ModuloBoletim .btn-sair {
-  display: inline-block;
-  padding: 12px 25px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #4facfe, #00c6ff);
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-.ModuloBoletim .btn-sair:hover {
-  transform: scale(1.05);
-  background: linear-gradient(135deg, #00c6ff, #4facfe);
+button:hover {
+  background: #5800a3;
 }
+
+/* botão sair */
+.btn-sair {
+  display: block;
+  margin: 30px auto;
+  background: #e74c3c;
+}
+
+.btn-sair:hover {
+  background: #c0392b;
+}
+
+/* tabela geral */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-family: Arial;
+}
+
+/* cabeçalho */
+th {
+  background: #6a0dad;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+/* células */
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* linhas alternadas */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* efeito hover */
+tr:hover {
+  background-color: #ddd;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th {
+  background: #6a0dad;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+
+/* Módulo Professor */
+
+/* fundo */
+.mp-body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #6a0dad, #1e3c72, #6259b6);
+}
+
+/* topo */
+.mp-topo {
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+}
+
+.mp-titulo {
+  margin: 0;
+}
+
+.mp-subtitulo {
+  margin: 5px 0 0;
+}
+
+/* container */
+.mp-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* card */
+.mp-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.mp-card-titulo {
+  text-align: center;
+}
+
+/* inputs */
+.mp-input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: 0.3s;
+}
+
+.mp-input:focus {
+  border-color: #2a5298;
+  box-shadow: 0 0 5px rgba(42,82,152,0.4);
+}
+
+/* botão */
+.mp-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #2a5298;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.mp-btn:hover {
+  background: #1e3c72;
+}
+
+/* botão sair */
+.mp-btn-sair {
+  display: block;
+  margin: 30px auto;
+  background: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.mp-btn-sair:hover {
+  background: #c0392b;
+}
+
+

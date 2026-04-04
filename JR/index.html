@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
     
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,28 +9,44 @@
 <link rel="stylesheet" href="MainCss.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
-<body>
+<body class="BodyIndex">
 
-    <div class="header">
-        <img src="https://i0.wp.com/educacional.com.br/wp-content/uploads/2025/01/infraestrutura-escolar.jpg?fit=1024%2C683&ssl=1" alt="Estudante">
+    <div class="cards">
+
+  <div class="card active">
+
+   
+    <div class="lado-imagem">
+      <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Login">
     </div>
 
-    <div class="container">
-        <h2>Informe seu Usuario e Senha!</h2>
+    
+    <div class="lado-form">
 
-        <div class="cards">
-            <a id="tela-login" class="card active">
-                <p class="user-info">Identifique-se para acessar o painel</p>
-                <input type="text" id="user_input" placeholder="Usuário">
-                <input type="password" id="pass_input" placeholder="Senha">
-                <button onclick="autenticar()">Entrar no Sistema</button>
-                <p style="font-size: 12px; color: #888;">Contas: admin/123, prof/123, aluno/123</p>
-            </a>
-            
-        </div>
+      <h2 class="Userinfo">Informe seu Usuario e Senha!</h2>
+
+      <div class="UserSenha">
+        <input type="text" id="user_input" placeholder="Usuário">
+        <input type="password" id="pass_input" placeholder="Senha">
+      </div>
+
+      <button onclick="autenticar()" class="BotaoIndex">Entrar no Sistema</button>
+
+      <p style="font-size: 12px; color: #888;">
+        Contas: admin/123, prof/123, aluno/123
+      </p>
+
     </div>
+
+  </div>
+
+</div>
+    
+
+    
 <script>
     // BANCO DE DADOS NO CÓDIGO
     const BANCO = {

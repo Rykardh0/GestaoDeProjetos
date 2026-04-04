@@ -6,65 +6,31 @@
 <link rel="stylesheet" href="MainCss.css">
 </head>
 
-<body>
+<body class="mp-body">
 
-<div class="ModuloProfessor">
+  <div class="mp-topo">
+    <h1 class="mp-titulo">Painel do Professor</h1>
+    <h2 class="mp-subtitulo" id="nomeProfessor">Bem-vindo</h2>
+  </div>
 
-  <div class="container">
+  <div class="mp-container">
 
-    <h1 class="titulo">Painel do Professor</h1>
-    <h2 class="subtitulo" id="nomeProfessor">Bem-vindo</h2>
+    <div class="mp-card">
+      <h2 class="mp-card-titulo">Lançar Notas</h2>
 
-    <h3>Painel Professor</h3>
-    <input id="aluno" placeholder="Nome do Aluno">
-    <input id="mat" placeholder="Matéria">
-    <input id="nota" placeholder="Nota">
-    <input id="falta" placeholder="Frequência">
-    <button onclick="lancar()">Lançar</button>
+      <input class="mp-input" id="aluno" placeholder="Nome do Aluno">
+      <input class="mp-input" id="mat" placeholder="Matéria">
+      <input class="mp-input" id="nota" placeholder="Nota">
+      <input class="mp-input" id="falta" placeholder="Frequência (%)">
 
-    <!-- Seleção de disciplina
-    <div class="box-disciplina">
-      <label>Disciplina:</label>
-      <select id="disciplina">
-        <option>Matemática</option>
-        <option>Português</option>
-        <option>História</option>
-      </select>
-    </div> -->
-
-    <!-- Tabela de alunos -->
-    <!-- <table class="tabela-professor">
-      <tr>
-        <th>Aluno</th>
-        <th>Nota</th>
-        <th>Faltas</th>
-        <th>Ação</th>
-      </tr>
-
-      <tr>
-        <td>João Silva</td>
-        <td><input type="number" placeholder="0 - 10"></td>
-        <td><input type="number" placeholder="%"></td>
-        <td><button class="btn-salvar">Salvar</button></td>
-      </tr>
-
-      <tr>
-        <td>Maria Souza</td>
-        <td><input type="number"></td>
-        <td><input type="number"></td>
-        <td><button class="btn-salvar">Salvar</button></td>
-      </tr>
-
-    </table> -->
-
-    <!-- Botão sair -->
-    <div class="CentralizarBotao">
-      <a href="#" class="btn-sair" onclick="sair()">Sair</a>
+      <button class="mp-btn" onclick="lancar()">Lançar</button>
     </div>
 
   </div>
 
-</div>
+  <button class="mp-btn-sair" onclick="sair()">Sair</button>
+
+</body>
 
 <script>
 /* =========================
@@ -102,5 +68,40 @@ function lancar() {
     }
 </script>
 
-</body>
-</html>
+
+<!-- Seleção de disciplina
+    <div class="box-disciplina">
+      <label>Disciplina:</label>
+      <select id="disciplina">
+        <option>Matemática</option>
+        <option>Português</option>
+        <option>História</option>
+      </select>
+    </div> -->
+
+    <!-- Tabela de alunos -->
+    <!-- <table class="tabela-professor">
+      <tr>
+        <th>Aluno</th>
+        <th>Nota</th>
+        <th>Faltas</th>
+        <th>Ação</th>
+      </tr>
+
+      <tr>
+        <td>João Silva</td>
+        <td><input type="number" placeholder="0 - 10"></td>
+        <td><input type="number" placeholder="%"></td>
+        <td><button class="btn-salvar">Salvar</button></td>
+      </tr>
+
+      <tr>
+        <td>Maria Souza</td>
+        <td><input type="number"></td>
+        <td><input type="number"></td>
+        <td><button class="btn-salvar">Salvar</button></td>
+      </tr>
+
+    </table> -->
+
+    <!-- Botão sair -->
