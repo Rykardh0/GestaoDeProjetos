@@ -20,7 +20,10 @@
 
       <input class="mp-input" id="aluno" placeholder="Nome do Aluno">
       <input class="mp-input" id="mat" placeholder="Matéria">
-      <input class="mp-input" id="nota" placeholder="Nota">
+      <input class="mp-input" id="turma" placeholder="Turma">
+      <input class="mp-input" id="nota_1" placeholder="Nota1">
+      <input class="mp-input" id="nota_2" placeholder="Nota2">
+      <input class="mp-input" id="nota_3" placeholder="Nota3">            
       <input class="mp-input" id="falta" placeholder="Frequência (%)">
 
       <button class="mp-btn" onclick="lancar()">Lançar</button>
@@ -56,52 +59,21 @@ function sair() {
 function lancar() {
         let nome = document.getElementById('aluno').value;
         let mat = document.getElementById('mat').value;
-        let nota = document.getElementById('nota').value;
+        let turma = document.getElementById('turma').value;
+        let nota1 = document.getElementById('nota_1').value;
+        let nota2 = document.getElementById('nota_2').value;
+        let nota3 = document.getElementById('nota_3').value;
         let falta = document.getElementById('falta').value;
         
         let db = JSON.parse(localStorage.getItem('db_alunos'));
-        if(db[nome]) {
-            db[nome].materias[mat] = { nota: nota, falta: falta};
+        if(db[nome]) {  
+            db[nome].materias[mat] = {turmas: turma, Nota1: nota1,Nota2: nota2,Nota3: nota3, falta: falta};
+            console.log(db[nome]);
             localStorage.setItem('db_alunos', JSON.stringify(db));
             alert("Nota lançada!");
+        }else{
+          alert("Aluno não encontrado!");
         }
     }
 </script>
 
-
-<!-- Seleção de disciplina
-    <div class="box-disciplina">
-      <label>Disciplina:</label>
-      <select id="disciplina">
-        <option>Matemática</option>
-        <option>Português</option>
-        <option>História</option>
-      </select>
-    </div> -->
-
-    <!-- Tabela de alunos -->
-    <!-- <table class="tabela-professor">
-      <tr>
-        <th>Aluno</th>
-        <th>Nota</th>
-        <th>Faltas</th>
-        <th>Ação</th>
-      </tr>
-
-      <tr>
-        <td>João Silva</td>
-        <td><input type="number" placeholder="0 - 10"></td>
-        <td><input type="number" placeholder="%"></td>
-        <td><button class="btn-salvar">Salvar</button></td>
-      </tr>
-
-      <tr>
-        <td>Maria Souza</td>
-        <td><input type="number"></td>
-        <td><input type="number"></td>
-        <td><button class="btn-salvar">Salvar</button></td>
-      </tr>
-
-    </table> -->
-
-    <!-- Botão sair -->

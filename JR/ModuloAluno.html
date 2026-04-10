@@ -31,7 +31,8 @@ let tabela = `
   <thead>
     <tr>
       <th>Disciplina</th>
-      <th>Nota</th>
+      <th>Notas</th>
+      <th>Média</th>
       <th>Frequência</th>
     </tr>
   </thead>
@@ -40,10 +41,12 @@ let tabela = `
 
 if (dados.materias && Object.keys(dados.materias).length > 0) {
   for (let m in dados.materias) {
+    let media = parseFloat((parseFloat(dados.materias[m].Nota1)+parseFloat(dados.materias[m].Nota2)+parseFloat(dados.materias[m].Nota3))/3);
     tabela += `
       <tr>
         <td>${m}</td>
-        <td>${dados.materias[m].nota}</td>
+        <td>1ª P-${dados.materias[m].Nota1} 2ª P-${dados.materias[m].Nota2} 3ª P-${dados.materias[m].Nota3}</td>
+        <td>${media.toFixed(2)}</td>
         <td>${dados.materias[m].falta}%</td>
       </tr>
     `;
@@ -66,30 +69,3 @@ function sair() {
   window.location.href = "index.html";
 }
 </script>
-
-
-<!-- <body>
-<h2>Meu Boletim</h2>
-<div id="box"></div>
-<script>
-    let user = localStorage.getItem('usuario_ativo');
-    let db = JSON.parse(localStorage.getItem('db_alunos'));
-    let dados = db[user];
-
-    let res = `<h3>Olá, ${user}</h3>`;
-    for(let m in dados.materias) {
-        res += `<p>${m}: ${dados.materias[m].nota} ${m}: ${dados.materias[m].falta}%)</p>`;
-    }
-    document.getElementById('box').innerHTML = res;
-
-    /* =========================
-    LOGOUT
-    ========================= */
-    function sair() {
-        localStorage.removeItem("usuario_ativo");
-        window.location.href = "index.html";
-    }
-
-</script>
-<button class="btn-sair" onclick="sair()">Sair</button>
-</body>-->

@@ -128,8 +128,6 @@ function gerarRelatorio() {
         let senha = document.getElementById('s').value;
         let db = JSON.parse(localStorage.getItem('db_alunos') || '{}');
         const select = document.getElementById('novo_tipo');
-        
-        console.log(select.value)
 
         if(select.value == "aluno"){
             db[nome] = { senha: senha, tipo: "Aluno", materias: {} };
