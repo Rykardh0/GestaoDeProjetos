@@ -83,7 +83,7 @@ function gerarRelatorio() {
             
             // Pega as matérias desse aluno específico
             for (let m in user.materias) {
-                detalhesN += `${m}: ${user.materias[m].nota}<br>`;
+                detalhesN += `${m}: 1ª P-${user.materias[m].Nota1} 2ª P-${user.materias[m].Nota2} 3ª P-${user.materias[m].Nota3}<br>`;
                 detalhesF += `${m}: ${user.materias[m].falta}%)<br>`;
             }
 
